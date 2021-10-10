@@ -4,5 +4,9 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
+- file: datasets
+- file: Data Inspection
+- file: exploratory_data
+- file: Cluster 1 - Profit and Loss
 - file: notebooks
+- file: markdown
