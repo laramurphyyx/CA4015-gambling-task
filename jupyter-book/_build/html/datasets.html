@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Datasets &#8212; My sample book</title>
+    <title>About the Datasets &#8212; My sample book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -96,7 +96,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Datasets
+   About the Datasets
   </a>
  </li>
  <li class="toctree-l1">
@@ -116,7 +116,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+   Example - Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Example - Markdown Files
   </a>
  </li>
 </ul>
@@ -201,6 +206,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-origins">
+   Dataset Origins
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-contents">
+   Dataset Contents
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dataset-structure">
+   Dataset Structure
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -209,9 +237,28 @@
         
               <div>
                 
-  <div class="section" id="datasets">
-<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h1>
-<p>about the datasets</p>
+  <div class="section" id="about-the-datasets">
+<h1>About the Datasets<a class="headerlink" href="#about-the-datasets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dataset-origins">
+<h2>Dataset Origins<a class="headerlink" href="#dataset-origins" title="Permalink to this headline">¶</a></h2>
+<p>The sources of these 9 datasets can be found in <a class="reference external" href="https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/">this paper</a>. The dataset contains results obtained by 10 different studies. These results were collected between the years of 2004 and 2015.</p>
+</div>
+<div class="section" id="dataset-contents">
+<h2>Dataset Contents<a class="headerlink" href="#dataset-contents" title="Permalink to this headline">¶</a></h2>
+<p>There are four values being measured in the datasets, the choice each subject made each trial, the reward value for making that choice, the penalty cost for making that choice and the study that they were a part of. All of the studies either have 95, 100 or 150 trials, so there are 4 datasets for each study size and for each value being measures, giving 12 datasets.</p>
+<p>The datasets are formatted as follows:</p>
+<ul class="simple">
+<li><p><strong>choice_{#trials}</strong>: The dataset containing the choices of subjects who played {#trials} trials</p></li>
+<li><p><strong>wi_{#trials}</strong>: The dataset containing the reward values of subjects who played {#trials} trials</p></li>
+<li><p><strong>lo_{#trials}</strong>: The dataset containing the losses of subjects who played {#trials} trials</p></li>
+<li><p><strong>index_{#trials}</strong>: The dataset containing the studies that the subjects who played {#trials} trials participated in</p></li>
+</ul>
+</div>
+<div class="section" id="dataset-structure">
+<h2>Dataset Structure<a class="headerlink" href="#dataset-structure" title="Permalink to this headline">¶</a></h2>
+<p>Each dataset follows the same structural layout. All of the datasets have named columns and rows. The column names of each dataset are the same depending on the value being measured. For example, all three datasets that measure the winning values (wi_95, wi_100, wi_150) all have the naming convention ‘Wins_{trial}’ for columns. Similarly, the naming conventions for the choices, losses and study are ‘Choice_{trial}’, ‘Losses_{trial}’ and ‘Study’ respectively.</p>
+<p>There are a total of 617 subjects accounted for in these datasets. 15 subjects played 95 trials, 504 subjects played 100 trials and 98 played 150 trials.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
