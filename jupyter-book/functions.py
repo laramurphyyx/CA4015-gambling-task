@@ -47,16 +47,6 @@ def create_plottable_array(dataframe):
             tmp_list.append([dataframe.columns[trial],int(dataframe.iloc[subject][trial + 1])])
     return np.array(tmp_list)
 
-def create_running_average_list(dataframe, row):
-    avg_data_row = dataframe.iloc[row][1]
-    tmp_list = []
-    for trial in range(1, len(dataframe.iloc[row])):
-        rolling_average = ((avg_data_row[-1]*(trial)) + data.iloc[row][trial+1]) / (trial+1)
-        avg_data_row.append(rolling_average)
-    for trial in range(0, len(dataframe.iloc[row][1])):
-        tmp_list.append(data.columns[trial], avg_data_row[trial])
-    return np.array(tmp_list)
-
 def create_running_average_array(dataframe, row):
     avg_data_row = [dataframe.iloc[0][1]]
     tmp_list = []
