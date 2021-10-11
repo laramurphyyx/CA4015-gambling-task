@@ -3,6 +3,8 @@
 
 # # Data Inspection
 
+# This is an initial inspection of the datasets. This will ensure that the data will be ready to used for clustering.
+
 # ## 1.    Importing relevant packages and Datasets
 
 # In[1]:
