@@ -68,6 +68,45 @@ def create_net_profit_loss_list(win_df, loss_df, row):
         net_total += total
         net_totals.append(net_total)
     return net_totals
+# +
+# Cluster 1: Comparing total profit/loss to number of times chosen per choice
+
+def create_net_profit_vs_count_list(dataset, win_dataset, loss_dataset, 
+                                    profit_loss = [], count = []):
+    number_trials = len(dataset.iloc[0])
+    number_subjects = len(dataset.iloc[:,0])
+    for subject in range(0, number_subjects):
+        ones_pl = 0
+        twos_pl = 0
+        threes_pl = 0
+        fours_pl = 0
+        ones_chosen = 0
+        twos_chosen = 0
+        threes_chosen = 0
+        fours_chosen = 0
+        for trial in range(0,number_trials):
+            choice = dataset.iloc[subject][trial]
+            win = win_dataset.iloc[subject][trial]
+            loss = loss_dataset.iloc[subject][trial]
+            if choice == 1:
+                ones_chosen += 1
+                ones_pl += (win + loss)
+            elif choice == 2:
+                twos_chosen += 1
+                twos_pl += (win + loss)
+            elif choice == 3:
+                threes_chosen += 1
+                threes_pl += (win + loss)
+            elif choice == 4:
+                fours_chosen += 1
+                fours_pl += (win + loss)
+        profit_loss.append([ones_pl, twos_pl, threes_pl, fours_pl])
+        count.append([ones_chosen/number_trials, 
+                      twos_chosen/number_trials, 
+                      threes_chosen/number_trials, 
+                      fours_chosen/number_trials])
+    return [profit_loss, count]
 # -
+
 
 
