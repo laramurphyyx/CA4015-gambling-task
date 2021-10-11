@@ -172,3 +172,41 @@ plt.legend(scatterpoints=1)
 # The few selected subjects are showing an expected scattered plot at the beginning of the task, with the direction of the plot becoming narrower towards the end.
 # 
 # These figures will not be useful for clustering as the influence of the choice on the running average becomes smaller and smaller and is not hugely representative of their choices towards the end, although it is an interesting observation.
+
+# ## Analysing Net Profit for Each Round
+
+# In[12]:
+
+
+trials_95 = win_95.columns.tolist()
+for subject in range(0,len(win_95)):
+    net_profits = create_net_profit_loss_list(win_95, loss_95, subject)
+    plt.plot(trials_95, net_profits, alpha = 0.3)
+plt.show()
+
+
+# In[13]:
+
+
+trials_100 = win_100.columns.tolist()
+for subject in range(0,len(trials_100)):
+    net_profits = create_net_profit_loss_list(win_100, loss_100, subject)
+    plt.plot(trials_100, net_profits, alpha=0.1)
+plt.show()
+
+
+# In[14]:
+
+
+trials_150 = win_150.columns.tolist()
+for subject in range(0,len(win_150)):
+    net_profits = create_net_profit_loss_list(win_150, loss_150, subject)
+    plt.plot(trials_150, net_profits, alpha = 0.1)
+plt.show()
+
+
+# It's difficult to draw conclusions from the above diagrams.
+# There seems to be a slight increase for majority of subjects until around the 10-20 trial mark when it takes a sharp decline. This could be due to the 'bad decks' having quite low penalties at the beginning and gradually getting higher penalties, as outlined in [this paper](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/).
+# 
+# For the diagrams shown in the 100-trial and 150-trial datasets, it seems there are an equal distribution of people's net profits/losses around the 0 mark. This shows that not everyone in the trial identified the 'good decks'.
+# 

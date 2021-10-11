@@ -58,3 +58,16 @@ def create_running_average_array(dataframe, row):
     my_array = np.array(tmp_list)
     return my_array
 
+def create_net_profit_loss_list(win_df, loss_df, row):
+    net_totals = []
+    net_total = 0
+    for trial in range(1, len(win_df.iloc[row])+1):
+        winnings = win_df.iloc[row][trial]
+        losses = loss_df.iloc[row][trial]
+        total = winnings + losses
+        net_total += total
+        net_totals.append(net_total)
+    return net_totals
+# -
+
+

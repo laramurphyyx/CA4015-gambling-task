@@ -243,6 +243,11 @@
    Viewing the running average of a selected group of subjects
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysing-net-profit-for-each-round">
+   Analysing Net Profit for Each Round
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -328,7 +333,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x281f7c8e1f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x16a674112b0&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_9_1.png" src="_images/Data Exploration Notebook_9_1.png" />
@@ -346,7 +351,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x281f7b65c70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x16a672d4910&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_10_1.png" src="_images/Data Exploration Notebook_10_1.png" />
@@ -364,7 +369,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x281f7cdc8e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x16a674357c0&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_11_1.png" src="_images/Data Exploration Notebook_11_1.png" />
@@ -382,7 +387,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x281f81f9370&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x16a6793df70&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_12_1.png" src="_images/Data Exploration Notebook_12_1.png" />
@@ -400,7 +405,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x281f856f790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x16a6749b040&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_13_1.png" src="_images/Data Exploration Notebook_13_1.png" />
@@ -454,7 +459,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x281f85c97c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x16a67d009d0&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Exploration Notebook_17_1.png" src="_images/Data Exploration Notebook_17_1.png" />
@@ -463,6 +468,54 @@
 <p>The graphs above are not representative of the entire group of participants, as plotting the choices of 617 people on a chart would not be legible.</p>
 <p>The few selected subjects are showing an expected scattered plot at the beginning of the task, with the direction of the plot becoming narrower towards the end.</p>
 <p>These figures will not be useful for clustering as the influence of the choice on the running average becomes smaller and smaller and is not hugely representative of their choices towards the end, although it is an interesting observation.</p>
+</div>
+<div class="section" id="analysing-net-profit-for-each-round">
+<h2>Analysing Net Profit for Each Round<a class="headerlink" href="#analysing-net-profit-for-each-round" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trials_95</span> <span class="o">=</span> <span class="n">win_95</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">win_95</span><span class="p">)):</span>
+    <span class="n">net_profits</span> <span class="o">=</span> <span class="n">create_net_profit_loss_list</span><span class="p">(</span><span class="n">win_95</span><span class="p">,</span> <span class="n">loss_95</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trials_95</span><span class="p">,</span> <span class="n">net_profits</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Exploration Notebook_20_0.png" src="_images/Data Exploration Notebook_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trials_100</span> <span class="o">=</span> <span class="n">win_100</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">trials_100</span><span class="p">)):</span>
+    <span class="n">net_profits</span> <span class="o">=</span> <span class="n">create_net_profit_loss_list</span><span class="p">(</span><span class="n">win_100</span><span class="p">,</span> <span class="n">loss_100</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trials_100</span><span class="p">,</span> <span class="n">net_profits</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Exploration Notebook_21_0.png" src="_images/Data Exploration Notebook_21_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trials_150</span> <span class="o">=</span> <span class="n">win_150</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">win_150</span><span class="p">)):</span>
+    <span class="n">net_profits</span> <span class="o">=</span> <span class="n">create_net_profit_loss_list</span><span class="p">(</span><span class="n">win_150</span><span class="p">,</span> <span class="n">loss_150</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trials_150</span><span class="p">,</span> <span class="n">net_profits</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Exploration Notebook_22_0.png" src="_images/Data Exploration Notebook_22_0.png" />
+</div>
+</div>
+<p>It’s difficult to draw conclusions from the above diagrams.
+There seems to be a slight increase for majority of subjects until around the 10-20 trial mark when it takes a sharp decline. This could be due to the ‘bad decks’ having quite low penalties at the beginning and gradually getting higher penalties, as outlined in <a class="reference external" href="https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/">this paper</a>.</p>
+<p>For the diagrams shown in the 100-trial and 150-trial datasets, it seems there are an equal distribution of people’s net profits/losses around the 0 mark. This shows that not everyone in the trial identified the ‘good decks’.</p>
 </div>
 </div>
 
