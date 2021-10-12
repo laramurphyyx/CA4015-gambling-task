@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: CA4015 - Assignment 1
-author: Lara Murphy
+author: Lara Murphy 
 logo: new_logo.png
 
 # Force re-execution of notebooks on each build.

@@ -1,8 +1,13 @@
+<!-- #region -->
 # Example - Markdown Files
 
 Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
 in regular markdown files (`.md`), you'll write in the same flavor of markdown
 called **MyST Markdown**.
+
+## Seeing if I can add an image
+<img src="cluster1_real_values.png"/>
+<img src="cluster1_real_values.png" onmouseover="this.src='cluster1_cluster_values.png'" onmouseout="this.src='cluster1_real_values.png'" /> 
 
 ## What is MyST?
 
@@ -51,7 +56,7 @@ In your built book.
 
 For more information on writing directives, see the
 [MyST documentation](https://myst-parser.readthedocs.io/).
-
+<!-- #endregion -->
 
 ### Using a role
 
