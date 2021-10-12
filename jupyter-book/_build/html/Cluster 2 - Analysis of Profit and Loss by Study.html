@@ -249,8 +249,23 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-the-data-by-profits-and-losses-and-identifying-clusters">
-   Plotting the data by Profits and Losses and identifying Clusters
+  <a class="reference internal nav-link" href="#plotting-the-data-by-profits-and-losses">
+   Plotting the data by Profits and Losses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-elbow-method-to-identify-optimal-k-for-k-means-algorithm">
+   Using Elbow Method to Identify Optimal K for K-Means Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-5-clusters-using-k-means-algorithm">
+   Creating 5 Clusters Using K-Means Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-cluster-for-each-study-using-the-k-means-algorithm">
+   Creating a Cluster for each Study using the K-Means Algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -259,8 +274,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-the-same-data-points-by-study">
-   Plotting the same data points by Study
+  <a class="reference internal nav-link" href="#comparing-predicted-clusters-to-the-original-studies">
+   Comparing Predicted Clusters to the Original Studies
   </a>
  </li>
 </ul>
@@ -276,7 +291,7 @@
                 
   <div class="section" id="cluster-2-average-profit-and-loss-per-study">
 <h1>Cluster 2: Average Profit and Loss per Study<a class="headerlink" href="#cluster-2-average-profit-and-loss-per-study" title="Permalink to this headline">¶</a></h1>
-<p>This cluster [what it is]</p>
+<p>This cluster is intended to identify the study based on the total profits and losses made by the participating subject.</p>
 <div class="section" id="importing-relevant-packages-and-datasets">
 <h2>Importing Relevant Packages and Datasets<a class="headerlink" href="#importing-relevant-packages-and-datasets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -388,8 +403,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="plotting-the-data-by-profits-and-losses-and-identifying-clusters">
-<h2>Plotting the data by Profits and Losses and identifying Clusters<a class="headerlink" href="#plotting-the-data-by-profits-and-losses-and-identifying-clusters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="plotting-the-data-by-profits-and-losses">
+<h2>Plotting the data by Profits and Losses<a class="headerlink" href="#plotting-the-data-by-profits-and-losses" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">profit_and_loss</span><span class="p">)</span>
@@ -402,12 +417,129 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x25037f428e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x24540e947f0&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" />
 </div>
 </div>
+</div>
+<div class="section" id="using-elbow-method-to-identify-optimal-k-for-k-means-algorithm">
+<h2>Using Elbow Method to Identify Optimal K for K-Means Algorithm<a class="headerlink" href="#using-elbow-method-to-identify-optimal-k-for-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sum_of_squared_distances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
+    <span class="n">Sum_of_squared_distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\laram\AppData\Local\Continuum\anaconda3\envs\ca4015\lib\site-packages\sklearn\cluster\_kmeans.py:881: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=3.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">Sum_of_squared_distances</span><span class="p">,</span> <span class="s1">&#39;bx-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sum_of_squared_distances&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Elbow Method For Optimal k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_17_0.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_17_0.png" />
+</div>
+</div>
+<p>It appears that the elbow point is at approximately k=5. We will use k=5 in our cluster creation.</p>
+</div>
+<div class="section" id="creating-5-clusters-using-k-means-algorithm">
+<h2>Creating 5 Clusters Using K-Means Algorithm<a class="headerlink" href="#creating-5-clusters-using-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans_5</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>
+    <span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span>
+    <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">y_km_5</span> <span class="o">=</span> <span class="n">kmeans_5</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cluster 1&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cluster 2&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cluster 3&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cluster 4&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">y_km_5</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cluster 5&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># plot the centroids</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">kmeans_5</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">kmeans_5</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+    <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;centroids&#39;</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;The Total Profit/Loss per Subject by Study&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss per Subject&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total Profit per Subject&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">20000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24541939280&gt;
+</pre></div>
+</div>
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" />
+</div>
+</div>
+<p>It is not clear just yet if this is an accurate representation of the data groupings.
+Below we will try out the same clustering technique for k=10, to allow k to equal the same number of classes (studies) that exist.</p>
+</div>
+<div class="section" id="creating-a-cluster-for-each-study-using-the-k-means-algorithm">
+<h2>Creating a Cluster for each Study using the K-Means Algorithm<a class="headerlink" href="#creating-a-cluster-for-each-study-using-the-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>
@@ -507,12 +639,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2503847ec10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24540ee1fa0&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_16_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_16_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" />
 </div>
 </div>
+<p>In the above graph, we can see that the total profit per subject or the total loss per subject is done by their overall totals. This can cause an unintended skew in the data, as the subjects who participated in 150-trial studies will naturally have a better opportunity to earn (or lose) more money.</p>
+<p>Below we will see the same graph with the data normalised, instead of total profit and loss for all trials, it will be the average profit or loss that the subject made per trial.</p>
 </div>
 <div class="section" id="creating-data-that-represents-the-average-profit-and-loss-per-choice">
 <h2>Creating Data that represents the average profit and loss per choice<a class="headerlink" href="#creating-data-that-represents-the-average-profit-and-loss-per-choice" title="Permalink to this headline">¶</a></h2>
@@ -540,7 +674,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_19_0.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_19_0.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_29_0.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_29_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -640,15 +774,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x250385e4550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24540f6dc70&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" />
 </div>
 </div>
 </div>
-<div class="section" id="plotting-the-same-data-points-by-study">
-<h2>Plotting the same data points by Study<a class="headerlink" href="#plotting-the-same-data-points-by-study" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comparing-predicted-clusters-to-the-original-studies">
+<h2>Comparing Predicted Clusters to the Original Studies<a class="headerlink" href="#comparing-predicted-clusters-to-the-original-studies" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">study_datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">study_fridberg</span><span class="p">,</span> <span class="n">study_hortsmann</span><span class="p">,</span>
@@ -746,12 +880,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2503864dd60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2453aec48e0&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_24_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_24_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" />
 </div>
 </div>
+<p>The above graph shows no obvious clusters. The choices made by the subjects seem to be generally coherent throughout all of the studies.</p>
+<p>This means that the clustering algorithm was limited in it’s performance. The k-means clustering algorithm was not the most suitable predictive algortihm to use for this data, as the data is not clustered in its natural form.</p>
+<p>This cluster could be expanded more by possibly introducing more features such as the amount of times they chose each deck throughout the trials, this could differentiate the studies and introduce organic clusters as the studies use different payout schemes.</p>
 </div>
 </div>
 

@@ -3,7 +3,9 @@
 
 # # Cluster 2: Average Profit and Loss per Study
 
-# This cluster [what it is]
+# This cluster is intended to identify the study based on the total profits and losses made by the participating subject.
+# 
+# 
 
 # ## Importing Relevant Packages and Datasets
 
@@ -107,7 +109,7 @@ for dataset_pair in win_loss_datasets:
     profit_and_loss = create_avg_profit_loss_list(dataset_pair, profit_and_loss)
 
 
-# ## Plotting the data by Profits and Losses and identifying Clusters
+# ## Plotting the data by Profits and Losses
 
 # In[8]:
 
@@ -120,7 +122,104 @@ plt.scatter(
 )
 
 
+# ## Using Elbow Method to Identify Optimal K for K-Means Algorithm 
+
 # In[9]:
+
+
+Sum_of_squared_distances = []
+K = range(1,20)
+for k in K:
+    km = KMeans(n_clusters=k)
+    km = km.fit(cluster_array)
+    Sum_of_squared_distances.append(km.inertia_)
+
+
+# In[10]:
+
+
+plt.plot(K, Sum_of_squared_distances, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Sum_of_squared_distances')
+plt.title('Elbow Method For Optimal k')
+plt.show()
+
+
+# It appears that the elbow point is at approximately k=5. We will use k=5 in our cluster creation.
+
+# ## Creating 5 Clusters Using K-Means Algorithm
+
+# In[11]:
+
+
+kmeans_5 = KMeans(
+    n_clusters=5, init='random',
+    n_init=1, max_iter = 300,
+)
+
+y_km_5 = kmeans_5.fit_predict(cluster_array)
+
+
+# In[12]:
+
+
+plt.scatter(
+    cluster_array[y_km_5 == 0, 0], cluster_array[y_km_5 == 0, 1],
+    s=5, c='green',
+    marker='o',
+    label='cluster 1'
+)
+
+plt.scatter(
+    cluster_array[y_km_5 == 1, 0], cluster_array[y_km_5 == 1, 1],
+    s=5, c='orange',
+    marker='o',
+    label='cluster 2'
+)
+
+plt.scatter(
+    cluster_array[y_km_5 == 2, 0], cluster_array[y_km_5 == 2, 1],
+    s=5, c='yellow',
+    marker='o',
+    label='cluster 3'
+)
+
+plt.scatter(
+    cluster_array[y_km_5 == 3, 0], cluster_array[y_km_5 == 3, 1],
+    s=5, c='blue',
+    marker='o',
+    label='cluster 4'
+)
+
+plt.scatter(
+    cluster_array[y_km_5 == 4, 0], cluster_array[y_km_5 == 4, 1],
+    s=5, c='red',
+    marker='o',
+    label='cluster 5'
+)
+
+# plot the centroids
+plt.scatter(
+    kmeans_5.cluster_centers_[:, 0], kmeans_5.cluster_centers_[:, 1],
+    s=100, marker='*',
+    c='red', edgecolor='black',
+    label='centroids'
+)
+
+plt.title("The Total Profit/Loss per Subject by Study")
+plt.xlabel("Total Loss per Subject")
+plt.ylabel("Total Profit per Subject")
+plt.xlim(0,15000)
+plt.ylim(0,-20000)
+plt.legend(scatterpoints=1)
+
+
+# It is not clear just yet if this is an accurate representation of the data groupings. 
+# Below we will try out the same clustering technique for k=10, to allow k to equal the same number of classes (studies) that exist.
+
+# ## Creating a Cluster for each Study using the K-Means Algorithm
+
+# In[13]:
 
 
 kmeans = KMeans(
@@ -131,7 +230,7 @@ kmeans = KMeans(
 y_km = kmeans.fit_predict(cluster_array)
 
 
-# In[10]:
+# In[14]:
 
 
 plt.scatter(
@@ -217,9 +316,13 @@ plt.ylim(0,-20000)
 plt.legend(scatterpoints=1)
 
 
+# In the above graph, we can see that the total profit per subject or the total loss per subject is done by their overall totals. This can cause an unintended skew in the data, as the subjects who participated in 150-trial studies will naturally have a better opportunity to earn (or lose) more money.
+# 
+# Below we will see the same graph with the data normalised, instead of total profit and loss for all trials, it will be the average profit or loss that the subject made per trial.
+
 # ## Creating Data that represents the average profit and loss per choice
 
-# In[11]:
+# In[15]:
 
 
 avg_profit_and_loss_per_choice = []
@@ -227,7 +330,7 @@ for dataset_pair in win_loss_datasets:
     avg_profit_and_loss_per_choice = create_avg_profit_loss__per_choice_list(dataset_pair, avg_profit_and_loss_per_choice)
 
 
-# In[12]:
+# In[16]:
 
 
 cluster2_array = np.array(avg_profit_and_loss_per_choice)
@@ -241,7 +344,13 @@ plt.xlim(0,120)
 plt.show()
 
 
-# In[13]:
+# In[ ]:
+
+
+
+
+
+# In[17]:
 
 
 kmeans2 = KMeans(
@@ -252,7 +361,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans.fit_predict(cluster2_array)
 
 
-# In[14]:
+# In[18]:
 
 
 plt.scatter(
@@ -336,9 +445,9 @@ plt.ylabel("Average Profit per Trial")
 plt.legend(scatterpoints=1)
 
 
-# ## Plotting the same data points by Study
+# ## Comparing Predicted Clusters to the Original Studies
 
-# In[15]:
+# In[19]:
 
 
 study_datasets = [study_fridberg, study_hortsmann,
@@ -354,7 +463,7 @@ for dataset in study_datasets:
 study_array = np.array(study_list)
 
 
-# In[16]:
+# In[20]:
 
 
 plt.scatter(
@@ -431,4 +540,16 @@ plt.ylabel("Average Profit per Trial")
 plt.xlim(0,120)
 plt.ylim(0,-160)
 plt.legend(scatterpoints=1)
+
+
+# The above graph shows no obvious clusters. The choices made by the subjects seem to be generally coherent throughout all of the studies.
+# 
+# This means that the clustering algorithm was limited in it's performance. The k-means clustering algorithm was not the most suitable predictive algortihm to use for this data, as the data is not clustered in its natural form.
+# 
+# This cluster could be expanded more by possibly introducing more features such as the amount of times they chose each deck throughout the trials, this could differentiate the studies and introduce organic clusters as the studies use different payout schemes.
+
+# In[ ]:
+
+
+
 
