@@ -106,7 +106,40 @@ def create_net_profit_vs_count_list(dataset, win_dataset, loss_dataset,
                       threes_chosen/number_trials, 
                       fours_chosen/number_trials])
     return [profit_loss, count]
-# -
 
+
+# +
+## Cluster 2: Comparing profits and loss madeby study
+
+def create_avg_profit_loss_list(win_loss_datasets, existing_list=[]):
+    win_dataset = win_loss_datasets[0]
+    loss_dataset = win_loss_datasets[1]
+    number_trials = len(win_dataset.iloc[0])
+    number_subjects = len(win_dataset.iloc[:,0])
+    for subject in range(0, number_subjects):
+        wins = 0
+        losses = 0
+        for trial in range(0, number_trials):
+            wins += win_dataset.iloc[subject][trial]
+            losses += loss_dataset.iloc[subject][trial]
+        existing_list.append([wins, losses])
+    return existing_list
+
+## Cluster 2: Comparing profits and loss madeby study
+
+def create_avg_profit_loss__per_choice_list(win_loss_datasets, existing_list=[]):
+    win_dataset = win_loss_datasets[0]
+    loss_dataset = win_loss_datasets[1]
+    number_trials = len(win_dataset.iloc[0])
+    number_subjects = len(win_dataset.iloc[:,0])
+    for subject in range(0, number_subjects):
+        wins = 0
+        losses = 0
+        for trial in range(0, number_trials):
+            wins += win_dataset.iloc[subject][trial]
+            losses += loss_dataset.iloc[subject][trial]
+        existing_list.append([wins/number_trials, losses/number_trials])
+    return existing_list
+# -
 
 
