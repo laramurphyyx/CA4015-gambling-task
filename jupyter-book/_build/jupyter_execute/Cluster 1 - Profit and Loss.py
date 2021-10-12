@@ -81,9 +81,36 @@ plt.scatter(
 )
 
 
-# ## Creating 4 Clusters using the K-Means Algorithm
+# ## Using Elbow Method to Identify Optimal K for K-Means Algorithm 
 
 # In[6]:
+
+
+Sum_of_squared_distances = []
+K = range(1,15)
+for k in K:
+    km = KMeans(n_clusters=k)
+    km = km.fit(cluster_array)
+    Sum_of_squared_distances.append(km.inertia_)
+
+
+# In[7]:
+
+
+plt.plot(K, Sum_of_squared_distances, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Sum_of_squared_distances')
+plt.title('Elbow Method For Optimal k')
+plt.show()
+
+
+# From the above graph, the 'elbow' point appears to be at k = 4.
+# 
+# As there are four choices that the datapoints are classed as, having k = 4 makes the most sense to allow comparisons between predicted clusters and the actual classes of each datapoint.
+
+# ## Creating a Cluster for each Choice Option using the K-Means Algorithm
+
+# In[8]:
 
 
 kmeans = KMeans(
@@ -95,7 +122,7 @@ kmeans = KMeans(
 y_km = kmeans.fit_predict(cluster_array)
 
 
-# In[7]:
+# In[9]:
 
 
 plt.scatter(
@@ -139,9 +166,9 @@ plt.ylabel("Number of times the option was chosen")
 plt.legend(scatterpoints=1)
 
 
-# ## Creating 4 Clusters using the K-Means Algorithm (where maximum iterations is 300)
+# ## Creating Same Clusters using the K-Means Algorithm (where maximum iterations is 300)
 
-# In[8]:
+# In[10]:
 
 
 kmeans2 = KMeans(
@@ -152,7 +179,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans2.fit_predict(cluster_array)
 
 
-# In[9]:
+# In[11]:
 
 
 # plot the 4 clusters
@@ -199,20 +226,20 @@ plt.legend(scatterpoints=1)
 
 # ## Comparing clustering algorithm to the original choices
 
-# In[10]:
+# In[12]:
 
 
 option = [1,2,3,4]*(len(profit_loss_list))
 option_array = np.array(option)
 
 
-# In[11]:
+# In[13]:
 
 
 option_array
 
 
-# In[12]:
+# In[14]:
 
 
 plt.scatter(
@@ -238,7 +265,7 @@ plt.scatter(
 
 plt.scatter(
     cluster_array[option_array == 4, 0], cluster_array[option_array == 4, 1],
-    s=25, alpha=0.1, c='lightgreen',
+    s=25, alpha=0.2, c='lightgreen',
     marker='o',
     label='Option 4'
 )
@@ -249,8 +276,18 @@ plt.ylabel("Number of times the option was chosen")
 plt.legend(scatterpoints=1)
 
 
-# In[ ]:
+# # Conclusions of Cluster Analyses
 
+# The clusters produced above are quite accurate in comparison to the real class it belongs to, in this case, the deck options 1, 2, 3 and 4. 
+# 
+# There is quite a noticeable split in the graph (at y=0), where there are two sets of data points on the left that are sloped downward, and two sets of datapoints on the right that are sloping upwards. This is an interesting observations as the datasets left and right of y=0 are split by what are considered the 'good decks' and 'bad decks'.
+# 
+# The 'bad decks' are deck 1 and 2, whilst the good decks are deck 3 and 4. Option 1 was the least chosen deck amongst participants, this is explained not only by it being considered a 'bad deck', but also as it is a deck with 'frequent losses', as stated [here](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/).
+# 
+# The use of the elbow method helped identify that the optimal number of clusters was 4, which was the original amount of classes, allowing for easier comparison. The cluster with 300 maximum iterations outperforms the other cluster. The k-means algorithm worked quite well in identifying the four classes (four choice options), as shown below.
 
+# ## Real Cluster Assignments
+# ![cluster1_real_values.png](attachment:cluster1_real_values.png)
 
-
+# ## Predicted Clustered Assignments
+# ![cluster1_cluster_values.png](attachment:cluster1_cluster_values.png)

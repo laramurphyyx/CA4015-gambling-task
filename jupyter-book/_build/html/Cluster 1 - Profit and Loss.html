@@ -233,30 +233,59 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-relevant-packages-and-datasets">
-   Importing Relevant Packages and Datasets
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Cluster 1: Profit and Loss vs. Times Chosen per Choice
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-relevant-packages-and-datasets">
+     Importing Relevant Packages and Datasets
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assigning-variables-for-net-profit-loss-and-choice-proportions-and-visualising-them">
+     Assigning Variables for Net Profit/Loss and Choice Proportions and Visualising them
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-elbow-method-to-identify-optimal-k-for-k-means-algorithm">
+     Using Elbow Method to Identify Optimal K for K-Means Algorithm
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-a-cluster-for-each-choice-option-using-the-k-means-algorithm">
+     Creating a Cluster for each Choice Option using the K-Means Algorithm
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-same-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300">
+     Creating Same Clusters using the K-Means Algorithm (where maximum iterations is 300)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-clustering-algorithm-to-the-original-choices">
+     Comparing clustering algorithm to the original choices
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assigning-variables-for-net-profit-loss-and-choice-proportions-and-visualising-them">
-   Assigning Variables for Net Profit/Loss and Choice Proportions and Visualising them
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusions-of-cluster-analyses">
+   Conclusions of Cluster Analyses
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-4-clusters-using-the-k-means-algorithm">
-   Creating 4 Clusters using the K-Means Algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-4-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300">
-   Creating 4 Clusters using the K-Means Algorithm (where maximum iterations is 300)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comparing-clustering-algorithm-to-the-original-choices">
-   Comparing clustering algorithm to the original choices
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#real-cluster-assignments">
+     Real Cluster Assignments
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predicted-clustered-assignments">
+     Predicted Clustered Assignments
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -351,15 +380,46 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x21e90f34160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x1d57d672190&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 1 - Profit and Loss_9_1.png" src="_images/Cluster 1 - Profit and Loss_9_1.png" />
 </div>
 </div>
 </div>
-<div class="section" id="creating-4-clusters-using-the-k-means-algorithm">
-<h2>Creating 4 Clusters using the K-Means Algorithm<a class="headerlink" href="#creating-4-clusters-using-the-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-elbow-method-to-identify-optimal-k-for-k-means-algorithm">
+<h2>Using Elbow Method to Identify Optimal K for K-Means Algorithm<a class="headerlink" href="#using-elbow-method-to-identify-optimal-k-for-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sum_of_squared_distances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
+    <span class="n">Sum_of_squared_distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">Sum_of_squared_distances</span><span class="p">,</span> <span class="s1">&#39;bx-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sum_of_squared_distances&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Elbow Method For Optimal k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Cluster 1 - Profit and Loss_12_0.png" src="_images/Cluster 1 - Profit and Loss_12_0.png" />
+</div>
+</div>
+<p>From the above graph, the ‘elbow’ point appears to be at k = 4.</p>
+<p>As there are four choices that the datapoints are classed as, having k = 4 makes the most sense to allow comparisons between predicted clusters and the actual classes of each datapoint.</p>
+</div>
+<div class="section" id="creating-a-cluster-for-each-choice-option-using-the-k-means-algorithm">
+<h2>Creating a Cluster for each Choice Option using the K-Means Algorithm<a class="headerlink" href="#creating-a-cluster-for-each-choice-option-using-the-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>
@@ -418,15 +478,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x21e91b42a00&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d57e93aa90&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 1 - Profit and Loss_12_1.png" src="_images/Cluster 1 - Profit and Loss_12_1.png" />
+<img alt="_images/Cluster 1 - Profit and Loss_16_1.png" src="_images/Cluster 1 - Profit and Loss_16_1.png" />
 </div>
 </div>
 </div>
-<div class="section" id="creating-4-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300">
-<h2>Creating 4 Clusters using the K-Means Algorithm (where maximum iterations is 300)<a class="headerlink" href="#creating-4-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-same-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300">
+<h2>Creating Same Clusters using the K-Means Algorithm (where maximum iterations is 300)<a class="headerlink" href="#creating-same-clusters-using-the-k-means-algorithm-where-maximum-iterations-is-300" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span>
@@ -485,10 +545,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x21e91bd2dc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d57e9dea90&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 1 - Profit and Loss_15_1.png" src="_images/Cluster 1 - Profit and Loss_15_1.png" />
+<img alt="_images/Cluster 1 - Profit and Loss_19_1.png" src="_images/Cluster 1 - Profit and Loss_19_1.png" />
 </div>
 </div>
 </div>
@@ -539,7 +599,7 @@
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
     <span class="n">cluster_array</span><span class="p">[</span><span class="n">option_array</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cluster_array</span><span class="p">[</span><span class="n">option_array</span> <span class="o">==</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-    <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span>
     <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Option 4&#39;</span>
 <span class="p">)</span>
@@ -552,12 +612,27 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x21e91b99af0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d57ea3aac0&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 1 - Profit and Loss_19_1.png" src="_images/Cluster 1 - Profit and Loss_19_1.png" />
+<img alt="_images/Cluster 1 - Profit and Loss_23_1.png" src="_images/Cluster 1 - Profit and Loss_23_1.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="conclusions-of-cluster-analyses">
+<h1>Conclusions of Cluster Analyses<a class="headerlink" href="#conclusions-of-cluster-analyses" title="Permalink to this headline">¶</a></h1>
+<p>The clusters produced above are quite accurate in comparison to the real class it belongs to, in this case, the deck options 1, 2, 3 and 4.</p>
+<p>There is quite a noticeable split in the graph (at y=0), where there are two sets of data points on the left that are sloped downward, and two sets of datapoints on the right that are sloping upwards. This is an interesting observations as the datasets left and right of y=0 are split by what are considered the ‘good decks’ and ‘bad decks’.</p>
+<p>The ‘bad decks’ are deck 1 and 2, whilst the good decks are deck 3 and 4. Option 1 was the least chosen deck amongst participants, this is explained not only by it being considered a ‘bad deck’, but also as it is a deck with ‘frequent losses’, as stated <a class="reference external" href="https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/">here</a>.</p>
+<p>The use of the elbow method helped identify that the optimal number of clusters was 4, which was the original amount of classes, allowing for easier comparison. The cluster with 300 maximum iterations outperforms the other cluster. The k-means algorithm worked quite well in identifying the four classes (four choice options), as shown below.</p>
+<div class="section" id="real-cluster-assignments">
+<h2>Real Cluster Assignments<a class="headerlink" href="#real-cluster-assignments" title="Permalink to this headline">¶</a></h2>
+<p><img alt="cluster1_real_values.png" src="attachment:cluster1_real_values.png" /></p>
+</div>
+<div class="section" id="predicted-clustered-assignments">
+<h2>Predicted Clustered Assignments<a class="headerlink" href="#predicted-clustered-assignments" title="Permalink to this headline">¶</a></h2>
+<p><img alt="cluster1_cluster_values.png" src="attachment:cluster1_cluster_values.png" /></p>
 </div>
 </div>
 
