@@ -209,6 +209,12 @@ option_array = np.array(option)
 # In[11]:
 
 
+option_array
+
+
+# In[12]:
+
+
 plt.scatter(
     cluster_array[option_array == 2, 0], cluster_array[option_array == 2, 1],
     s=25, alpha=0.3, c='blue',
