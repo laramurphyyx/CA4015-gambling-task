@@ -147,9 +147,30 @@ plt.show()
 
 # It appears that the elbow point is at approximately k=5. We will use k=5 in our cluster creation.
 
-# ## Creating 5 Clusters Using K-Means Algorithm
+# ## Silhouette values in comparison
 
 # In[11]:
+
+
+from sklearn.metrics import silhouette_score
+silhouette_scores = []
+K = range(2,20)
+for k in K:
+    km = KMeans(n_clusters=k)
+    km = km.fit(cluster_array)
+    silhouette = silhouette_score(cluster_array, km.labels_, metric='euclidean')
+    silhouette_scores.append(silhouette)
+
+
+# In[12]:
+
+
+plt.plot(range(2,20),silhouette_scores)
+
+
+# ## Creating 5 Clusters Using K-Means Algorithm
+
+# In[13]:
 
 
 kmeans_5 = KMeans(
@@ -160,7 +181,7 @@ kmeans_5 = KMeans(
 y_km_5 = kmeans_5.fit_predict(cluster_array)
 
 
-# In[12]:
+# In[14]:
 
 
 plt.scatter(
@@ -219,7 +240,7 @@ plt.legend(scatterpoints=1)
 
 # ## Creating a Cluster for each Study using the K-Means Algorithm
 
-# In[13]:
+# In[15]:
 
 
 kmeans = KMeans(
@@ -230,7 +251,7 @@ kmeans = KMeans(
 y_km = kmeans.fit_predict(cluster_array)
 
 
-# In[14]:
+# In[16]:
 
 
 plt.scatter(
@@ -322,7 +343,7 @@ plt.legend(scatterpoints=1)
 
 # ## Creating Data that represents the average profit and loss per choice
 
-# In[15]:
+# In[17]:
 
 
 avg_profit_and_loss_per_choice = []
@@ -330,7 +351,7 @@ for dataset_pair in win_loss_datasets:
     avg_profit_and_loss_per_choice = create_avg_profit_loss__per_choice_list(dataset_pair, avg_profit_and_loss_per_choice)
 
 
-# In[16]:
+# In[18]:
 
 
 cluster2_array = np.array(avg_profit_and_loss_per_choice)
@@ -350,7 +371,7 @@ plt.show()
 
 
 
-# In[17]:
+# In[19]:
 
 
 kmeans2 = KMeans(
@@ -361,7 +382,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans.fit_predict(cluster2_array)
 
 
-# In[18]:
+# In[20]:
 
 
 plt.scatter(
@@ -449,7 +470,7 @@ plt.legend(scatterpoints=1)
 
 # ## Comparing Predicted Clusters to the Original Studies
 
-# In[19]:
+# In[21]:
 
 
 study_datasets = [study_fridberg, study_hortsmann,
@@ -465,7 +486,7 @@ for dataset in study_datasets:
 study_array = np.array(study_list)
 
 
-# In[20]:
+# In[22]:
 
 
 plt.scatter(

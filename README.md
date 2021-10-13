@@ -22,4 +22,4 @@ To build this book locally, you can:
 jupyter-book build jupyter-book/
 ```
 
-You can also view the jupyter book through [this link](https://laramurphyyx.github.io/CA4015-gambling-task/index.html)
+You can also view the jupyter book through [this link](http://laramurphyyx.github.io/CA4015-gambling-task/)

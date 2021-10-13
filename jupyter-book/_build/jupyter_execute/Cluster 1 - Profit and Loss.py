@@ -108,6 +108,20 @@ plt.show()
 # 
 # As there are four choices that the datapoints are classed as, having k = 4 makes the most sense to allow comparisons between predicted clusters and the actual classes of each datapoint.
 
+# 
+
+# In[86]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
 # ## Creating a Cluster for each Choice Option using the K-Means Algorithm
 
 # In[8]:
