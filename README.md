@@ -17,9 +17,11 @@ The goal of the assignment is to take the datasets as included in [this paper](h
 
 To build this book locally, you can:
 - Clone this repository
-- Build the jupyter book by running this command
+- Build the jupyter book by running this command:
 ```
 jupyter-book build jupyter-book/
 ```
 
-You can also view the jupyter book through [this link](http://laramurphyyx.github.io/CA4015-gambling-task/)
+You can also view the jupyter book through [this link](http://laramurphyyx.github.io/CA4015-gambling-task/).
+
+If the above link is broken, you can view a PDF format of the jupyter book [here](https://github.com/laramurphyyx/CA4015-gambling-task/blob/main/jupyter-book/_build/pdf/book.pdf).
