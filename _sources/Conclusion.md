@@ -2,9 +2,9 @@
 
 ## Data Exploration Conclusion
 
-The data exploration involved in these datasets were related to the payoff schemes and the general choices made by the subjects. 
+The exploration of these datasets relate to the payoff schemes and the general choices made by the subjects. 
 
-The results from exploring the data based on the payoff schemes used by the studies was in line with the description of the payoff schemes in [this papaer](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/). It is useful to visualise the payoff schemes to try and justify differences in subjects' choices.
+The results from exploring the data based on the payoff schemes used by the studies was in line with the description of the payoff schemes in [this paper](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/). It is useful to visualise the payoff schemes to try and justify differences in subjects' choices.
 
 The results from exploring the choice popularity was quite interesting, as the popularity of each choice seems to change throughout the duration of the trials. The good decks and bad decks begin with a small difference in rewards and losses, that gradually become more drastic. The popularity increasing/decreasing are representative of the decks that become better or worse as the trials go on.
 

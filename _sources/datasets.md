@@ -2,7 +2,7 @@
 
 ## Dataset Origins
 
-The sources of these 9 datasets can be found in [this paper](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/). The dataset contains results obtained by 10 different studies. These results were collected between the years of 2004 and 2015. The results shown in these datasets are representing 617 healthy participants.
+The sources of these 9 datasets can be found [here](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.ak/). The dataset contains results obtained by 10 different studies. These results were collected between the years of 2004 and 2015. The results shown in these datasets are representing 617 healthy participants.
 
 
 ## Dataset Contents
