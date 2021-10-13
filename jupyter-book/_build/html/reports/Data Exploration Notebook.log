@@ -17,8 +17,10 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 from functions import *
 ------------------
 
@@ -27,7 +29,7 @@ Traceback [1;36m(most recent call last)[0m:
   File [0;32m"C:\Users\laram\AppData\Local\Continuum\anaconda3\envs\ca4015\lib\site-packages\IPython\core\interactiveshell.py"[0m, line [0;32m3441[0m, in [0;35mrun_code[0m
     exec(code_obj, self.user_global_ns, self.user_ns)
 
-[1;36m  File [1;32m"C:\Users\laram\AppData\Local\Temp/ipykernel_37548/2837795774.py"[1;36m, line [1;32m3[1;36m, in [1;35m<module>[1;36m[0m
+[1;36m  File [1;32m"C:\Users\laram\AppData\Local\Temp/ipykernel_38796/3690506223.py"[1;36m, line [1;32m5[1;36m, in [1;35m<module>[1;36m[0m
 [1;33m    from functions import *[0m
 
 [1;36m  File [1;32m"C:\Users\laram\CA4015\CA4015-gambling-task\jupyter-book\functions.py"[1;36m, line [1;32m74[0m

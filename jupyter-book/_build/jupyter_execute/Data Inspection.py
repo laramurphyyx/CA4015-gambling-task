@@ -60,7 +60,7 @@ for dataset in datasets:
 # 
 # The check_for_duplicate_rows() function checks the quantity of duplicate rows. This function does not use an assertion, as it is entirely possible that two subjects participating in the task may have received the same sequence of rewards or penalties. The validity of this function is subjective, but I do not believe that there are any mistaken duplicates in these datasets.
 
-# In[4]:
+# In[ ]:
 
 
 check_for_outlier(choice_95, [1,2,3,4])
@@ -76,7 +76,7 @@ check_for_outlier(loss_100, range(-3000, 1))
 check_for_outlier(loss_150, range(-3000, 1))
 
 
-# In[5]:
+# In[ ]:
 
 
 check_all_data_type(choice_95, np.int64)
