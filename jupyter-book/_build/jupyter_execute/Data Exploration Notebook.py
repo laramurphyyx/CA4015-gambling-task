@@ -50,7 +50,7 @@ for dataset in datasets:
 # 
 # The following code snippets will be exploring the popularity of each choice throughout the game.
 
-# In[ ]:
+# In[4]:
 
 
 array_95 = create_plottable_array(choice_95)
@@ -62,7 +62,7 @@ array_150 = create_plottable_array(choice_150)
 
 # As there were 504 subjects contained in the 'array_100' dataset, they have been split into three groups to allow for clearer analysis of the graphs
 
-# In[ ]:
+# In[5]:
 
 
 # plot the data points
@@ -73,7 +73,7 @@ plt.scatter(
 )
 
 
-# In[ ]:
+# In[6]:
 
 
 # plot the data points
@@ -84,7 +84,7 @@ plt.scatter(
 )
 
 
-# In[ ]:
+# In[7]:
 
 
 # plot the data points
@@ -95,7 +95,7 @@ plt.scatter(
 )
 
 
-# In[ ]:
+# In[8]:
 
 
 # plot the data points
@@ -106,7 +106,7 @@ plt.scatter(
 )
 
 
-# In[ ]:
+# In[9]:
 
 
 # plot the data points
@@ -129,7 +129,7 @@ plt.scatter(
 
 # ## Viewing the running average of a selected group of subjects
 
-# In[ ]:
+# In[10]:
 
 
 running_average_95 = create_running_average_array(choice_95, 1)
@@ -137,7 +137,7 @@ running_average_100 = create_running_average_array(choice_100, 452)
 running_average_150 = create_running_average_array(choice_150, 83)
 
 
-# In[ ]:
+# In[11]:
 
 
 plt.scatter(
@@ -175,7 +175,7 @@ plt.legend(scatterpoints=1)
 
 # ## Analysing Net Profit for Each Round
 
-# In[21]:
+# In[12]:
 
 
 trials_95 = win_95.columns.tolist()
@@ -185,7 +185,7 @@ for subject in range(0,len(win_95)):
 plt.show()
 
 
-# In[19]:
+# In[13]:
 
 
 trials_100 = win_100.columns.tolist()
@@ -195,7 +195,7 @@ for subject in range(0,len(trials_100)):
 plt.show()
 
 
-# In[23]:
+# In[14]:
 
 
 trials_150 = win_150.columns.tolist()

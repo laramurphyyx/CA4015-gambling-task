@@ -361,7 +361,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans.fit_predict(cluster2_array)
 
 
-# In[21]:
+# In[18]:
 
 
 plt.scatter(
