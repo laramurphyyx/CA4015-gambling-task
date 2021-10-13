@@ -83,7 +83,7 @@ plt.scatter(
 
 # ## Using Elbow Method to Identify Optimal K for K-Means Algorithm 
 
-# In[6]:
+# In[74]:
 
 
 Sum_of_squared_distances = []
@@ -94,7 +94,7 @@ for k in K:
     Sum_of_squared_distances.append(km.inertia_)
 
 
-# In[7]:
+# In[75]:
 
 
 plt.plot(K, Sum_of_squared_distances, 'bx-')
@@ -110,7 +110,7 @@ plt.show()
 
 # ## Creating a Cluster for each Choice Option using the K-Means Algorithm
 
-# In[8]:
+# In[6]:
 
 
 kmeans = KMeans(
@@ -122,7 +122,7 @@ kmeans = KMeans(
 y_km = kmeans.fit_predict(cluster_array)
 
 
-# In[9]:
+# In[7]:
 
 
 plt.scatter(
@@ -168,7 +168,7 @@ plt.legend(scatterpoints=1)
 
 # ## Creating Same Clusters using the K-Means Algorithm (where maximum iterations is 300)
 
-# In[10]:
+# In[8]:
 
 
 kmeans2 = KMeans(
@@ -179,7 +179,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans2.fit_predict(cluster_array)
 
 
-# In[11]:
+# In[9]:
 
 
 # plot the 4 clusters
@@ -226,20 +226,20 @@ plt.legend(scatterpoints=1)
 
 # ## Comparing clustering algorithm to the original choices
 
-# In[12]:
+# In[10]:
 
 
 option = [1,2,3,4]*(len(profit_loss_list))
 option_array = np.array(option)
 
 
-# In[13]:
+# In[11]:
 
 
 option_array
 
 
-# In[14]:
+# In[71]:
 
 
 plt.scatter(

@@ -278,6 +278,16 @@
    Comparing Predicted Clusters to the Original Studies
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#real-cluster-assignments">
+   Real Cluster Assignments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predicted-cluster-assignments">
+   Predicted Cluster Assignments
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -304,12 +314,28 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+
+  <span class="n">File</span> <span class="s2">&quot;C:\Users\laram\AppData\Local\Continuum</span><span class="se">\a</span><span class="s2">naconda3\envs\ca4015\lib\site-packages\IPython\core\interactiveshell.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3441</span><span class="p">,</span> <span class="ow">in</span> <span class="n">run_code</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">code_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_global_ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_ns</span><span class="p">)</span>
+
+  <span class="n">File</span> <span class="s2">&quot;C:\Users\laram\AppData\Local\Temp/ipykernel_30568/3922687706.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="kn">from</span> <span class="nn">functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="gt">  File</span><span class="nn"> &quot;C:\Users\laram\CA4015\CA4015-gambling-task\jupyter-book\functions.py&quot;</span><span class="gt">, line </span><span class="mi">74</span>
+    <span class="k">def</span> <span class="nf">frequency_of_losses</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+                                   <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win_95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/wi_95.csv&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/index_95.csv&#39;</span><span class="p">))</span>
+<span class="n">win_95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/wi_95.csv&#39;</span><span class="p">))</span>
 <span class="n">loss_95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/lo_95.csv&#39;</span><span class="p">))</span>
-<span class="n">index_95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/index_95.csv&#39;</span><span class="p">))</span>
 
 <span class="n">index_100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/index_100.csv&#39;</span><span class="p">))</span>
 <span class="n">win_100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/wi_100.csv&#39;</span><span class="p">))</span>
@@ -417,7 +443,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x24540e947f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14624a7bca0&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" />
@@ -529,7 +555,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24541939280&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x14625beafd0&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" />
@@ -639,7 +665,7 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24540ee1fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x14625c9ea00&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" />
@@ -769,12 +795,14 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;The Average Profit/Loss per Trial by Study&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average Loss per Trial&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average Profit per Trial&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">160</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24540f6dc70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x14625eb3a30&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" />
@@ -880,7 +908,7 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2453aec48e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x14625e15250&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" />
@@ -889,6 +917,14 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 <p>The above graph shows no obvious clusters. The choices made by the subjects seem to be generally coherent throughout all of the studies.</p>
 <p>This means that the clustering algorithm was limited in it’s performance. The k-means clustering algorithm was not the most suitable predictive algortihm to use for this data, as the data is not clustered in its natural form.</p>
 <p>This cluster could be expanded more by possibly introducing more features such as the amount of times they chose each deck throughout the trials, this could differentiate the studies and introduce organic clusters as the studies use different payout schemes.</p>
+</div>
+<div class="section" id="real-cluster-assignments">
+<h2>Real Cluster Assignments<a class="headerlink" href="#real-cluster-assignments" title="Permalink to this headline">¶</a></h2>
+<p><img alt="cluster2_real_values.png" src="attachment:cluster2_real_values.png" /></p>
+</div>
+<div class="section" id="predicted-cluster-assignments">
+<h2>Predicted Cluster Assignments<a class="headerlink" href="#predicted-cluster-assignments" title="Permalink to this headline">¶</a></h2>
+<p><img alt="cluster2_cluster_values.png" src="attachment:cluster2_cluster_values.png" /></p>
 </div>
 </div>
 

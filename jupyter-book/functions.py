@@ -69,6 +69,12 @@ def create_net_profit_loss_list(win_df, loss_df, row):
         net_totals.append(net_total)
     return net_totals
 # +
+# Investigating Rewards v Losses
+
+def frequency_of_losses(losses)
+
+
+# +
 # Cluster 1: Comparing total profit/loss to number of times chosen per choice
 
 def create_net_profit_vs_count_list(dataset, win_dataset, loss_dataset, 

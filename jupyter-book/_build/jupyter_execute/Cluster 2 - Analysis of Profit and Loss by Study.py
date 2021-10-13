@@ -22,9 +22,9 @@ from functions import *
 # In[2]:
 
 
+index_95 = pd.DataFrame(pd.read_csv('../data/index_95.csv'))
 win_95 = pd.DataFrame(pd.read_csv('../data/wi_95.csv'))
 loss_95 = pd.DataFrame(pd.read_csv('../data/lo_95.csv'))
-index_95 = pd.DataFrame(pd.read_csv('../data/index_95.csv'))
 
 index_100 = pd.DataFrame(pd.read_csv('../data/index_100.csv'))
 win_100 = pd.DataFrame(pd.read_csv('../data/wi_100.csv'))
@@ -361,7 +361,7 @@ kmeans2 = KMeans(
 y_km2 = kmeans.fit_predict(cluster2_array)
 
 
-# In[18]:
+# In[21]:
 
 
 plt.scatter(
@@ -442,6 +442,8 @@ plt.scatter(
 plt.title("The Average Profit/Loss per Trial by Study")
 plt.xlabel("Average Loss per Trial")
 plt.ylabel("Average Profit per Trial")
+plt.xlim(0,120)
+plt.ylim(0,-160)
 plt.legend(scatterpoints=1)
 
 
@@ -548,8 +550,8 @@ plt.legend(scatterpoints=1)
 # 
 # This cluster could be expanded more by possibly introducing more features such as the amount of times they chose each deck throughout the trials, this could differentiate the studies and introduce organic clusters as the studies use different payout schemes.
 
-# In[ ]:
+# ## Real Cluster Assignments
+# ![cluster2_real_values.png](attachment:cluster2_real_values.png)
 
-
-
-
+# ## Predicted Cluster Assignments
+# ![cluster2_cluster_values.png](attachment:cluster2_cluster_values.png)
