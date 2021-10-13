@@ -259,6 +259,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#silhouette-values-in-comparison">
+   Silhouette values in comparison
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-5-clusters-using-k-means-algorithm">
    Creating 5 Clusters Using K-Means Algorithm
   </a>
@@ -427,7 +432,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x27cc21a18e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x2b25a5f2ac0&gt;
 </pre></div>
 </div>
 <img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_14_1.png" />
@@ -469,6 +474,36 @@
 </div>
 </div>
 <p>It appears that the elbow point is at approximately k=5. We will use k=5 in our cluster creation.</p>
+</div>
+<div class="section" id="silhouette-values-in-comparison">
+<h2>Silhouette values in comparison<a class="headerlink" href="#silhouette-values-in-comparison" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="n">silhouette_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">)</span>
+    <span class="n">silhouette</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">cluster_array</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+    <span class="n">silhouette_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silhouette</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span><span class="n">silhouette_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2b25b0b88b0&gt;]
+</pre></div>
+</div>
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" />
+</div>
+</div>
 </div>
 <div class="section" id="creating-5-clusters-using-k-means-algorithm">
 <h2>Creating 5 Clusters Using K-Means Algorithm<a class="headerlink" href="#creating-5-clusters-using-k-means-algorithm" title="Permalink to this headline">¶</a></h2>
@@ -539,10 +574,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x27cc2c5a2b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2b25b115f70&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_21_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_24_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_24_1.png" />
 </div>
 </div>
 <p>It is not clear just yet if this is an accurate representation of the data groupings.
@@ -649,10 +684,10 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x27cc21ebdf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2b25b1f0df0&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_25_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_28_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_28_1.png" />
 </div>
 </div>
 <p>In the above graph, we can see that the total profit per subject or the total loss per subject is done by their overall totals. This can cause an unintended skew in the data, as the subjects who participated in 150-trial studies will naturally have a better opportunity to earn (or lose) more money.</p>
@@ -684,7 +719,7 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_29_0.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_29_0.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_0.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -786,10 +821,10 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x27cc2df1d60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2b25b2b58b0&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_32_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" />
 </div>
 </div>
 </div>
@@ -892,10 +927,10 @@ Below we will try out the same clustering technique for k=10, to allow k to equa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x27cc2ea9e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2b25b361e20&gt;
 </pre></div>
 </div>
-<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_35_1.png" />
+<img alt="_images/Cluster 2 - Analysis of Profit and Loss by Study_38_1.png" src="_images/Cluster 2 - Analysis of Profit and Loss by Study_38_1.png" />
 </div>
 </div>
 <p>The above graph shows no obvious clusters. The choices made by the subjects seem to be generally coherent throughout all of the studies.</p>
